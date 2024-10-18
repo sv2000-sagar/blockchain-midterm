@@ -114,7 +114,7 @@
   "sourceMap": "64:1156:2:-;;;328:255;8:9:-1;5:2;;;30:1;27;20:12;5:2;328:255:2;406:7;419:46;;;;;;;;;425:16;419:46;;;;443:15;419:46;;;;460:1;419:46;;;;463:1;419:46;;;406:60;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;406:60:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;496:7;509:46;;;;;;;;;515:16;509:46;;;;533:15;509:46;;;;550:1;509:46;;;;553:1;509:46;;;496:60;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;496:60:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;64:1156;;;;;;",
   "deployedSourceMap": "64:1156:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;246:22;;8:9:-1;5:2;;;30:1;27;20:12;5:2;246:22:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1102:115;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1102:115:2;;;;;;;;;;;;;;;;;;;;;;;;;;591:503;;8:9:-1;5:2;;;30:1;27;20:12;5:2;591:503:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;246:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1102:115::-;1159:7;1172:36;;;;;;;;;1178:6;1172:36;;;;1186:15;1172:36;;;;1203:1;1172:36;;;;1206:1;1172:36;;;1159:50;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1159:50:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1102:115;:::o;591:503::-;655:16;682:12;705:21;737:20;768;799:17;827:16;854:14;879:18;908:13;940:19;962:7;970:3;962:12;;;;;;;;;;;;;;;;;;;;940:34;;993:5;1000:4;1006:5;:19;;;1027:1;1030;1033:5;:15;;;1050:1;1053;1056:5;:16;;;1074:5;:11;;;985:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;591:503;;;;;;;;;;;;:::o",
   "source": "// contracts/MockCryptoKitties.sol\r\npragma solidity ^0.4.25;\r\n\r\ncontract MockCryptoKitties {\r\n    \r\n    struct Kitty {\r\n        uint256 genes;\r\n        uint256 birthTime;\r\n        uint256 cooldownIndex;\r\n        uint256 generation;\r\n    }\r\n\r\n    Kitty[] public kitties;\r\n\r\n    // Add \"public\" visibility to the constructor\r\n    constructor() public {\r\n        // Initialize with some mock kitties\r\n        kitties.push(Kitty(1234567890123456, block.timestamp, 0, 1)); // Kitty with ID 0\r\n        kitties.push(Kitty(6543210987654321, block.timestamp, 0, 1)); // Kitty with ID 1\r\n    }\r\n\r\n    function getKitty(uint256 _id) external view returns (\r\n        bool isGestating,\r\n        bool isReady,\r\n        uint256 cooldownIndex,\r\n        uint256 nextActionAt,\r\n        uint256 siringWithId,\r\n        uint256 birthTime,\r\n        uint256 matronId,\r\n        uint256 sireId,\r\n        uint256 generation,\r\n        uint256 genes\r\n    ) {\r\n        Kitty storage kitty = kitties[_id];\r\n        return (false, true, kitty.cooldownIndex, 0, 0, kitty.birthTime, 0, 0, kitty.generation, kitty.genes);\r\n    }\r\n\r\n    function createKitty(uint256 _genes) external {\r\n        kitties.push(Kitty(_genes, block.timestamp, 0, 1));\r\n    }\r\n}\r\n",
-  "sourcePath": "C:\\Users\\sagar\\Desktop\\Cryptozombie demo package\\contracts\\MockCryptoKitties.sol",
+  "sourcePath": "C:\\Users\\sagar\\Downloads\\blockchain-midterm\\contracts\\MockCryptoKitties.sol",
   "ast": {
     "absolutePath": "project:/contracts/MockCryptoKitties.sol",
     "exportedSymbols": {
@@ -341,7 +341,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1511,
+                              "referencedDeclaration": 1685,
                               "src": "443:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -529,7 +529,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1511,
+                              "referencedDeclaration": 1685,
                               "src": "533:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -1395,7 +1395,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1511,
+                              "referencedDeclaration": 1685,
                               "src": "1186:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -1985,7 +1985,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1511,
+                                      "referencedDeclaration": 1685,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -2181,7 +2181,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1511,
+                                      "referencedDeclaration": 1685,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -3111,7 +3111,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1511,
+                                      "referencedDeclaration": 1685,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -3201,12 +3201,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x44c2685790135eA5EeEbD2FfE7FEaD3E470C119d",
-      "transactionHash": "0xc77b302a4ffc98b8e3ee8e257de00b72272e5c89a1570db39906ce76f091d539"
+      "address": "0x8337F808960d803c658fFfAac2d6694B5F15426c",
+      "transactionHash": "0xad6b8ac9039461a0b69b00f3f9852797381e373c8ce6a52c655e8b0e69dbdbab"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-17T03:30:56.273Z",
+  "updatedAt": "2024-10-18T07:36:24.398Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

@@ -15,14 +15,15 @@ contract ZombieFactory is Ownable {
   uint dnaModulus = 10 ** dnaDigits;
   uint cooldownTime = 0 days;
 
-  struct Zombie {
+ struct Zombie {
     string name;
     uint dna;
     uint32 level;
     uint32 readyTime;
     uint16 winCount;
     uint16 lossCount;
-  }
+    uint32 totalBattles;
+}
 
   Zombie[] public zombies;
   uint public zombieCount = 0;  // New variable to keep track of total number of zombies
@@ -31,7 +32,7 @@ contract ZombieFactory is Ownable {
   mapping (address => uint) ownerZombieCount;
 
   function _createZombie(string _name, uint _dna) internal {
-    uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
+    uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0, 0)) - 1;
     zombieToOwner[id] = msg.sender;
     ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
     zombieCount = zombies.length;  // Update the zombie count

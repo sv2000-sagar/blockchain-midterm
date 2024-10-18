@@ -22,15 +22,19 @@ contract ZombieAttack is ZombieHelper {
       myZombie.winCount++;
       myZombie.level++;
       enemyZombie.lossCount++;
-      _triggerCooldown(myZombie);
       emit AttackResult(_zombieId, _targetId, true); // Emit win result
     } else {
       // Loss scenario
       myZombie.lossCount++;
       enemyZombie.winCount++;
-      _triggerCooldown(myZombie);
       emit AttackResult(_targetId, _zombieId, false); // Emit loss result
     }
+
+    // Update total battles fought for both zombies
+    myZombie.totalBattles++;
+    enemyZombie.totalBattles++;
+
+    _triggerCooldown(myZombie);
   }
 
   function _randMod(uint _modulus) internal returns (uint) {

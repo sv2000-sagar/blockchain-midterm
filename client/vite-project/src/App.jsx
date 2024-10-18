@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import cryptoZombiesABI from "../../../build/contracts/ZombieOwnership.json";
-import Hero from "./scenes/hero";
+import Hero from "./components/hero";
+import Leaderboard from "./components/leaderboard";
 import MockCryptoKittiesABI from "../../../build/contracts/MockCryptoKitties.json";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [txStatus, setTxStatus] = useState("");
   const [cryptoKitties, setCryptoKitties] = useState(null);
   const [otherZombies, setOtherZombies] = useState([]);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   const zombieImages = [
     "https://i.seadn.io/gae/8iv0bkuUPojb5_WQy7_Ay7tzrnpAKahjtmLYJyU_y_hy3O3OaRrjMhNAJwdYaBYk6Sb8VkKiZT5Ki7_2GMkGQ7g_YAvYGKor3bImFg?auto=format&dpr=1&w=1000",
@@ -426,15 +428,32 @@ function App() {
           </button>
 
           <button
-            className="showZombieButton bg-gradient-to-r from-cyan-500 text- to-teal-500 text-white px-4 py-0.5 border-none rounded-md"
-            onClick={async () => {
-              const ids = await getZombiesByOwner(userAccount, cryptoZombies);
-              displayZombies(ids, cryptoZombies);
-            }}
+            className="leaderboardButton bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-0.5 border-none rounded-md"
+            onClick={() => setShowLeaderboard(!showLeaderboard)}
           >
-            Show Zombies
+            {showLeaderboard ? "Hide Leaderboard" : "Show Leaderboard"}
           </button>
+          
         </div>
+
+        {showLeaderboard && (
+          <div className="mt-10">
+            <Leaderboard cryptoZombies={cryptoZombies} web3={web3} />
+          </div>
+        )}
+
+        {zombies.length === 0 &&
+        <h2 className="text-white text-3xl text-center mt-10">
+        You don't own any zombies
+      </h2>
+
+        }
+
+          {zombies.length > 0 && 
+          <>
+            <h2 className="text-white text-3xl text-center mt-10">
+              My Zombies
+            </h2>
 
         <div id="zombies" className="flex flex-wrap">
           {zombies.map((zombie, index) => {
@@ -499,11 +518,11 @@ function App() {
               </div>
             );
           })}
-        </div>
+        </div></>}
         {/* Other Zombies available for attack */}
-        {otherZombies && (
+        {otherZombies.length > 0 && (
           <>
-            <h2 className="text-white text-4xl text-center">
+            <h2 className="text-white text-3xl text-center mt-10">
               Available zombies to attack
             </h2>
             <div id="otherZombies" className="flex flex-wrap">
