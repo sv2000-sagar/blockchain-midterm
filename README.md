@@ -25,7 +25,7 @@ CryptoZombies is an interactive coding tutorial that teaches users how to build 
 9. **Used Latest Metamask Web3 API to connect to Ganache**
 10. **Added a leaderboard to display all the zombies**
 
-## Project Setup Guide
+# Project Setup Guide
 
 ## Prerequisites
 - Node.js (v16 or higher)
