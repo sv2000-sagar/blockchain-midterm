@@ -5,7 +5,7 @@
 
 - **Sagar Varma** - 885199208 - akanksh5@csu.fullerton.edu
 - **Piyush** - 885199208 - akanksh5@csu.fullerton.edu
-- **Pavan Pasumarthy** - 885199208 - akanksh5@csu.fullerton.edu
+- **Pavan Kumar Pasumarthy** - 885153056 - ppasumarthy@csu.fullerton.edu 
 - **Akanksh Jagadish** - 885199208 - akanksh5@csu.fullerton.edu
 
 ## Project Overview
