@@ -3,7 +3,7 @@
 
 ## Team Members
 
-- **Sagar Varma** - 885199208 - akanksh5@csu.fullerton.edu
+- **Sagar Verma** - 885163998 - sv2000.sagarverma@csu.fullerton.edu
 - **Piyush** - 885199208 - akanksh5@csu.fullerton.edu
 - **Pavan Kumar Pasumarthy** - 885153056 - ppasumarthy@csu.fullerton.edu 
 - **Akanksh Jagadish** - 885199208 - akanksh5@csu.fullerton.edu
