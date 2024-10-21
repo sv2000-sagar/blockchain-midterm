@@ -4,6 +4,8 @@ var ZombieFeeding = artifacts.require("./zombiefeeding.sol");
 var ZombieHelper = artifacts.require("./zombiehelper.sol");
 var ZombieAttack = artifacts.require("./zombieattack.sol");
 var ZombieOwnership = artifacts.require("./zombieownership.sol");
+var ZombieBreeding = artifacts.require("./ZombieBreeding.sol");
+
 const MockCryptoKitties = artifacts.require("MockCryptoKitties");
 
 module.exports = async function(deployer, network, accounts) {
@@ -17,6 +19,7 @@ module.exports = async function(deployer, network, accounts) {
   await deployer.deploy(ZombieHelper);
   await deployer.deploy(ZombieAttack);
   await deployer.deploy(ZombieOwnership);
+  await deployer.deploy(ZombieBreeding);
 
   // Deploy MockCryptoKitties contract
   await deployer.deploy(MockCryptoKitties);

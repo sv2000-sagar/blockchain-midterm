@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-import cryptoZombiesABI from "../../../build/contracts/ZombieOwnership.json";
+// import cryptoZombiesABI from "../../../build/contracts/ZombieOwnership.json";
+import cryptoZombiesABI from "../../../build/contracts/ZombieBreeding.json";
+
 import Hero from "./components/hero";
 import Leaderboard from "./components/leaderboard";
 import MockCryptoKittiesABI from "../../../build/contracts/MockCryptoKitties.json";
@@ -141,6 +143,10 @@ function App() {
           } else {
             console.log("CryptoZombies instance is not initialized.");
           }
+
+          // Assuming cryptoZombies is your contract instance
+console.log("Available methods:", cryptoZombies.methods);
+
 
           // Cleanup function to remove event listeners
           return () => {
@@ -391,7 +397,7 @@ function App() {
         .send({ from: userAccount, gas: 300000 });
 
       setTxStatus("Zombie successfully transferred!");
-      
+
       // After the transfer, refresh the user's zombies
       const myZombies = await getZombiesByOwner(userAccount, cryptoZombies);
       displayZombies(myZombies, cryptoZombies);
@@ -407,6 +413,23 @@ function App() {
       setTxStatus(error.message || "An error occurred during the transfer.");
     }
   }
+
+  async function breedZombies(zombieId1, zombieId2) {
+    setTxStatus("Breeding in progress...");
+    try {
+      await cryptoZombies.methods
+        .breedZombies(zombieId1, zombieId2)
+        .send({ from: userAccount, gas: 3000000 });
+
+      setTxStatus("Breeding successful! A new zombie has been created.");
+      const ids = await getZombiesByOwner(userAccount, cryptoZombies);
+      displayZombies(ids, cryptoZombies);
+    } catch (error) {
+      console.error("Error breeding zombies:", error);
+      setTxStatus(error.message || "An error occurred during breeding.");
+    }
+  }
+  
 
   return (
     <>
@@ -433,7 +456,6 @@ function App() {
           >
             {showLeaderboard ? "Hide Leaderboard" : "Show Leaderboard"}
           </button>
-          
         </div>
 
         {showLeaderboard && (
@@ -442,83 +464,93 @@ function App() {
           </div>
         )}
 
-        {zombies.length === 0 &&
-        <h2 className="text-white text-3xl text-center mt-10">
-        You don't own any zombies
-      </h2>
+        {zombies.length === 0 && (
+          <h2 className="text-white text-3xl text-center mt-10">
+            You don't own any zombies
+          </h2>
+        )}
 
-        }
-
-          {zombies.length > 0 && 
+        {zombies.length > 0 && (
           <>
             <h2 className="text-white text-3xl text-center mt-10">
               My Zombies
             </h2>
 
-        <div id="zombies" className="flex flex-wrap">
-          {zombies.map((zombie, index) => {
-            const id = zombie.id.toString();
-            const dnaStr = zombie.dna.toString();
-            const dnaHash = simpleHash(dnaStr);
-            const imageIndex = dnaHash % zombieImages.length;
-            const zombieImage = zombieImages[imageIndex];
-            console.log("final");
-            console.log(id);
-            return (
-              <div key={index} className="basis-1/4 p-2 ">
-                <div className="zombie pb-20 ">
-                  <div className="border-4 border-white w-full max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-r from-cyan-500 to-teal-500 mt-5">
-                    <img className="w-full" src={zombieImage} alt="Zombie" />
-                    <div className="px-6 py-2 text-center">
-                      <div className="font-bold text-2xl mb-2 text-center">
-                        {zombie.name} (ID: {id})
-                      </div>
-                      <ul className="text-xl">
-                        <li>DNA: {zombie.dna}</li>
-                        <li>Level: {zombie.level}</li>
-                        <li>Wins: {zombie.winCount}</li>
-                        <li>Losses: {zombie.lossCount}</li>
-                        <li>Ready Time: {zombie.readyTime}</li>
-                      </ul>
-                    </div>
-                    <div className="text-center py-1 text-md">
-                      <button
-                        className="bg-black text-white px-4 py-0.5 border-none rounded-md"
-                        onClick={() => levelUp(zombie.id)}
-                      >
-                        Level Up
-                      </button>
-                      <button
-                        onClick={() => {
-                          const kittyId = prompt("Enter Kitty ID to feed on");
-                          if (kittyId) {
-                            feedOnKitty(zombie.id, kittyId);
-                          }
-                        }}
-                      >
-                        Feed on Kitty
-                      </button>
+            <div id="zombies" className="flex flex-wrap">
+              {zombies.map((zombie, index) => {
+                const id = zombie.id.toString();
+                const dnaStr = zombie.dna.toString();
+                const dnaHash = simpleHash(dnaStr);
+                const imageIndex = dnaHash % zombieImages.length;
+                const zombieImage = zombieImages[imageIndex];
+                console.log("final");
+                console.log(id);
+                return (
+                  <div key={index} className="basis-1/4 p-2 ">
+                    <div className="zombie pb-20 ">
+                      <div className="border-4 border-white w-full max-w-sm rounded overflow-hidden shadow-lg bg-gradient-to-r from-cyan-500 to-teal-500 mt-5">
+                        <img
+                          className="w-full"
+                          src={zombieImage}
+                          alt="Zombie"
+                        />
+                        <div className="px-6 py-2 text-center">
+                          <div className="font-bold text-2xl mb-2 text-center">
+                            {zombie.name} (ID: {id})
+                          </div>
+                          <ul className="text-xl">
+                            <li>DNA: {zombie.dna}</li>
+                            <li>Level: {zombie.level}</li>
+                            <li>Wins: {zombie.winCount}</li>
+                            <li>Losses: {zombie.lossCount}</li>
+                            <li>Ready Time: {zombie.readyTime}</li>
+                          </ul>
+                        </div>
+                        <div className="text-center py-1 text-md flex justify-center">
+                          <button
+                            className="bg-black text-white px-4 py-0.5 border-none rounded-md"
+                            onClick={() => levelUp(zombie.id)}
+                          >
+                            Level Up
+                          </button>
 
-                      <button
-                        onClick={() => {
-                          const recipientAddress = prompt(
-                            "Enter the recipient's address"
-                          );
-                          if (recipientAddress) {
-                            transferZombie(zombie.id, recipientAddress);
-                          }
-                        }}
-                        className="ml-2 bg-black text-white px-4 py-0.5 border-none rounded-md"
-                      >
-                        Transfer Zombie
-                      </button>
+                          {/* Breeding Button */}
+                          <button
+                            className="bg-black ml-2 text-white px-4 py-0.5 border-none rounded-md"
+                            onClick={() => {
+                              const partnerId = prompt(
+                                "Enter the ID of another zombie to breed with"
+                              );
+                              if (partnerId) {
+                                breedZombies(zombie.id, partnerId);
+                              }
+                            }}
+                          >
+                            Breed
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              const recipientAddress = prompt(
+                                "Enter the recipient's address"
+                              );
+                              if (recipientAddress) {
+                                transferZombie(zombie.id, recipientAddress);
+                              }
+                            }}
+                            className="ml-2 bg-black text-white px-4 py-0.5 border-none rounded-md"
+                          >
+                            Transfer Zombie
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div></>}
+                );
+              })}
+            </div>
+          </>
+        )}
         {/* Other Zombies available for attack */}
         {otherZombies.length > 0 && (
           <>
@@ -546,7 +578,6 @@ function App() {
                             {zombie.name}
                           </div>
                           <ul className="text-xl">
-                            <li>DNA: {zombie.dna}</li>
                             <li>Level: {zombie.level}</li>
                             <li>Wins: {zombie.winCount}</li>
                             <li>Losses: {zombie.lossCount}</li>
