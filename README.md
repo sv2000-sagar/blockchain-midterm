@@ -26,8 +26,13 @@ CryptoZombies is an interactive coding tutorial that teaches users how to build 
 10. **Added a Leaderboard to display all the zombies and it's sorted by Win/Loss ratio**
 11. **Implemented the Attack Zombie feature**
 12. **Implemented the ability for a zombie to breed.**
-13. **Users can see zombies across different existing accounts.**
-
+13. **Users can see zombies across different existing accounts/players.**
+14. **Users can see the zombies owned by them in their account.**
+15. **Users can tranfer zombies across accounts.**
+16. **Users also have the ability to level up their zombies.**
+17. **Leveraged TailwindCSS for styling.**
+18. **Created a standalone contract to implement the Zombie breeding functionality.**
+19. **Supports a field called "Total Battles" that shows the number of battles fought by the Zombie.**
 
 # Project Setup Guide
 
