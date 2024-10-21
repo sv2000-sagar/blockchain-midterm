@@ -33,6 +33,7 @@ CryptoZombies is an interactive coding tutorial that teaches users how to build 
 17. **Leveraged TailwindCSS for styling.**
 18. **Created a standalone contract to implement the Zombie breeding functionality.**
 19. **Supports a field called "Total Battles" that shows the number of battles fought by the Zombie.**
+20. **When accounts are switched, The zombies are updated on the user interface in real time wihtout any delay.**
 
 # Project Setup Guide
 
