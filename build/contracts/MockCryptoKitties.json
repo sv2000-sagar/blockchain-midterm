@@ -341,7 +341,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1685,
+                              "referencedDeclaration": 1788,
                               "src": "443:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -529,7 +529,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1685,
+                              "referencedDeclaration": 1788,
                               "src": "533:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -1395,7 +1395,7 @@
                               "name": "block",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1685,
+                              "referencedDeclaration": 1788,
                               "src": "1186:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_block",
@@ -1985,7 +1985,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1685,
+                                      "referencedDeclaration": 1788,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -2181,7 +2181,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1685,
+                                      "referencedDeclaration": 1788,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -3111,7 +3111,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1685,
+                                      "referencedDeclaration": 1788,
                                       "type": "block",
                                       "value": "block"
                                     },
@@ -3201,12 +3201,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x8337F808960d803c658fFfAac2d6694B5F15426c",
-      "transactionHash": "0xad6b8ac9039461a0b69b00f3f9852797381e373c8ce6a52c655e8b0e69dbdbab"
+      "address": "0xd300C05aF9A39B5A92ddf0dCA0d970dc7E98C6cD",
+      "transactionHash": "0x2219d5f9222605b824627a272bbf55423149d5023e802529684aea92583848c2"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-18T07:36:24.398Z",
+  "updatedAt": "2024-10-21T04:03:22.343Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

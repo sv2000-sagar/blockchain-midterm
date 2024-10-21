@@ -249,7 +249,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1695,
+                        "referencedDeclaration": 1798,
                         "src": "531:3:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -556,10 +556,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1698,
-                        1699
+                        1801,
+                        1802
                       ],
-                      "referencedDeclaration": 1698,
+                      "referencedDeclaration": 1801,
                       "src": "840:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -630,7 +630,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1695,
+                        "referencedDeclaration": 1798,
                         "src": "1014:3:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1237,10 +1237,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1698,
-                        1699
+                        1801,
+                        1802
                       ],
-                      "referencedDeclaration": 1698,
+                      "referencedDeclaration": 1801,
                       "src": "1903:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1671,7 +1671,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1695,
+                                  "referencedDeclaration": 1798,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1967,10 +1967,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                1698,
-                                1699
+                                1801,
+                                1802
                               ],
-                              "referencedDeclaration": 1698,
+                              "referencedDeclaration": 1801,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2143,7 +2143,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1695,
+                                  "referencedDeclaration": 1798,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -2718,10 +2718,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                1698,
-                                1699
+                                1801,
+                                1802
                               ],
-                              "referencedDeclaration": 1698,
+                              "referencedDeclaration": 1801,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -2984,7 +2984,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-18T07:36:22.370Z",
+  "updatedAt": "2024-10-21T04:03:19.943Z",
   "devdoc": {
     "methods": {
       "isOwner()": {

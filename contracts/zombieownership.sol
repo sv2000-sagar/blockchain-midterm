@@ -7,6 +7,12 @@ import "./safemath.sol";
 contract ZombieOwnership is ZombieAttack, ERC721 {
     using SafeMath for uint256;
 
+     // Define the onlyOwnerOf modifier here
+    modifier onlyOwnerOf(uint _zombieId) {
+        require(msg.sender == zombieToOwner[_zombieId], "You must own this zombie.");
+        _;
+    }
+
     mapping(uint => address) zombieApprovals;
 
     function balanceOf(address _owner) external view returns (uint256) {
@@ -33,7 +39,8 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
     ) external payable {
         require(
             zombieToOwner[_tokenId] == msg.sender ||
-                zombieApprovals[_tokenId] == msg.sender
+            zombieApprovals[_tokenId] == msg.sender,
+            "Caller is not owner nor approved"
         );
         require(_to != address(0)); // Prevent transfer to the zero address
         _transfer(_from, _to, _tokenId);
@@ -59,21 +66,15 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
         // Sort the array based on win/loss ratio.
         // If a zombie has 0 losses, consider it as a high rank (undefeated).
         for (uint k = 0; k < length - 1; k++) {
-            // Renamed variable to 'k'
             for (uint j = k + 1; j < length; j++) {
-                // Keep 'j' for inner loop
                 uint winsA = zombies[topZombies[k]].winCount;
                 uint lossesA = zombies[topZombies[k]].lossCount;
                 uint winsB = zombies[topZombies[j]].winCount;
                 uint lossesB = zombies[topZombies[j]].lossCount;
 
                 // Calculate win/loss ratios (handle division by zero).
-                uint ratioA = (lossesA == 0)
-                    ? winsA * 100
-                    : (winsA * 100) / lossesA;
-                uint ratioB = (lossesB == 0)
-                    ? winsB * 100
-                    : (winsB * 100) / lossesB;
+                uint ratioA = (lossesA == 0) ? winsA * 100 : (winsA * 100) / lossesA;
+                uint ratioB = (lossesB == 0) ? winsB * 100 : (winsB * 100) / lossesB;
 
                 // Sort in descending order of win/loss ratio.
                 if (ratioB > ratioA) {
